@@ -33,7 +33,7 @@ const StockScreener = () => {
     setLoading(true);
     setError(null);
     try {
-      const conditions = query.split(' AND ').map(c => c.trim()).filter(c => c);
+      const conditions = query.replace(/\band\b/gi, "AND").split(' AND ').map(c => c.trim()).filter(c => c);
       let filtered = stocks.slice();
 
       filtered = filtered.filter(stock =>
